@@ -9,14 +9,14 @@ const gamePage = document.querySelector("#game");
 const backBtn = document.querySelector(".back-btn");
 
 function renderPages() {
-    homePage.classList.toggle("hide", state !== "idle");  
-    gamePage.classList.toggle("hide", state !== "answering");  
+    homePage.classList.toggle("hide", state !== "idle");
+    gamePage.classList.toggle("hide", state !== "answering");
 }
 
 // Render gui
 const acronymSpan = document.querySelector(".acronym");
-const hintIcon= document.querySelector(".hint-icon");
-const correctIcon= document.querySelector(".correct-icon");
+const hintIcon = document.querySelector(".hint-icon");
+const correctIcon = document.querySelector(".correct-icon");
 const wrongIcon = document.querySelector(".wrong-icon");
 const clueSpan = document.querySelector(".clue-span");
 const fullName = document.querySelector(".agency-span");
@@ -27,6 +27,12 @@ function renderGame() {
     wrongIcon.classList.toggle("hide", state !== "wrong");
     clueSpan.classList.toggle("hide", state !== "answering");
     fullName.classList.toggle("hide", state === "answering");
+
+    if (state === "end") {
+        acronymSpan.textContent = "Finished!";
+        fullName.textContent = "Score: ";
+        return;
+    }
 
     acronymSpan.textContent = questions[currIndex].acronym;
     clueSpan.textContent = questions[currIndex].description;
@@ -39,17 +45,18 @@ backBtn.addEventListener('click', e => {
 });
 
 // Get questions
-const easySet = agencies.filter(a => a.difficulty === "easy");
+const easySet = agencies.filter(a => a.difficulty === "easy").splice(0, 2);
+console.log(easySet)
 const intermediateSet = agencies.filter(a => a.difficulty === "intermediate");
 const hardSet = agencies.filter(a => a.difficulty === "hard");
 
 let questions = [];
 
 function getSetQ() {
-    if (diff === "easy") questions = easySet;  
-    if (diff === "intermediate") questions = intermediateSet;  
+    if (diff === "easy") questions = easySet;
+    if (diff === "intermediate") questions = intermediateSet;
     if (diff === "hard") questions = hardSet;
-    
+
     questions = shuffle(questions);
 }
 
@@ -79,5 +86,45 @@ startBtns.forEach(btn => {
 
 // Get current question
 let currIndex = 0;
+
+// Get and validate input
+const inputEl = document.querySelector("input");
+let isConfirmed = false;
+
+inputEl.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+        if (!isConfirmed) {
+            const inputVal = inputEl.value.toLocaleLowerCase().trim();
+
+            if (inputVal === questions[currIndex].fullName.toLowerCase()) {
+                state = "correct";
+            } else {
+                state = "wrong";
+            }
+            console.log(state);
+            renderGame();
+            isConfirmed = true;
+        } else {
+            getNextQuestion();
+            inputEl.focus();
+            inputEl.value = "";
+            if (state === "end") {
+                inputEl.disabled = true;
+            } else {
+                isConfirmed = false;
+            }
+            renderGame();
+        }
+    }
+});
+
+function getNextQuestion() {
+    currIndex++;
+    if (currIndex >= questions.length) {
+        state = "end";
+        return;
+    }
+    state = "answering";
+}
 
 renderPages();
