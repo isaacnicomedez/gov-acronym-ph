@@ -36,8 +36,11 @@ function renderGame() {
 
     if (state === "end") {
         acronymSpan.textContent = "Finished!";
-        scoreSpan.textContent = `Score: ${score} / ${questions.length}`;
+        scoreSpan.textContent = `${isNewRecord ? "New High" : ""} Score: ${score} / ${questions.length}`;
         timeSpan.textContent = `Time: ${formatTime(totalmilliseconds)}`;
+        if (isNewRecord) {
+
+        }
         return;
     }
 
@@ -55,7 +58,7 @@ backBtn.addEventListener('click', e => {
 });
 
 // Get questions
-const easySet = agencies.filter(a => a.difficulty === "easy").splice(0, 2);
+const easySet = agencies.filter(a => a.difficulty === "easy").splice(0, 3);
 console.log(easySet)
 const intermediateSet = agencies.filter(a => a.difficulty === "intermediate");
 const hardSet = agencies.filter(a => a.difficulty === "hard");
@@ -91,7 +94,7 @@ startBtns.forEach(btn => {
         currIndex = 0;
         score = 0;
         inputEl.disabled = false;
-        inputEl.focus();
+        isNewRecord = false;
         isConfirmed = false;
 
         resetTimer();
@@ -100,6 +103,8 @@ startBtns.forEach(btn => {
         renderPages();
         getSetQ();
         renderGame();
+
+        inputEl.focus();
     });
 });
 
@@ -137,7 +142,6 @@ inputEl.addEventListener('keydown', e => {
                 startTimer();
                 isConfirmed = false;
                 inputEl.disabled = false;
-                inputEl.focus();
             }
             renderGame();
         }
@@ -194,6 +198,39 @@ function formatTime(totalMilliseconds) {
     const formattedCentiseconds = String(centiseconds).padStart(2, '0');
 
     return `${formattedMinutes}:${formattedSeconds}:${formattedCentiseconds}`;
+}
+
+// local storage
+let isNewRecord = false;
+
+function saveHighScore(difficulty, score, time) {
+    const scoreKey = `highscore_${difficulty}`;
+    const timeKey = `besttime_${difficulty}`;
+
+    const savedScore = parseInt(localStorage.getItem(scoreKey)) || 0;
+    const savedTime = parseInt(localStorage.getItem(timeKey)) || Infinity;
+
+    let isNewRecord = false;
+
+    if (score > savedScore) {
+        localStorage.setItem(scoreKey, score);
+        localStorage.setItem(timeKey, time);
+        isNewRecord = true;
+    } 
+
+    else if (score === savedScore && time < savedTime) {
+        localStorage.setItem(timeKey, time);
+        isNewRecord = true;
+    }
+
+    return isNewRecord;
+}
+
+function getHighScore(difficulty) {
+    return {
+        score: localStorage.getItem(`highscore_${difficulty}`) || 0,
+        time: localStorage.getItem(`besttime_${difficulty}`) ? formatTime(localStorage.getItem(`besttime_${difficulty}`)) : "--:--:--"
+    };
 }
 
 renderPages();
