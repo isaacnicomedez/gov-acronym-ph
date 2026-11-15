@@ -82,6 +82,8 @@ startBtns.forEach(btn => {
     btn.addEventListener('click', e => {
         diff = e.target.textContent.toLowerCase();
         state = "answering";
+        currIndex = 0;
+        inputEl.disabled = false;
         renderPages();
         getSetQ();
         renderGame();
