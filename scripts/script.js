@@ -44,7 +44,20 @@ let questions = [];
 function getSetQ() {
     if (diff === "easy") questions = easySet;  
     if (diff === "intermediate") questions = intermediateSet;  
-    if (diff === "hard") questions = hardSet;  
+    if (diff === "hard") questions = hardSet;
+    
+    questions = shuffle(questions);
+}
+
+// Shuffle questions
+function shuffle(arr) {
+    const newArr = [...arr];
+    for (let i = newArr.length - 1; i > 0; i--) {
+        const random = Math.floor(Math.random() * (i + 1));
+
+        [newArr[i], newArr[random]] = [newArr[random], newArr[i]];
+    }
+    return newArr;
 }
 
 // Get dificulty
@@ -62,6 +75,6 @@ startBtns.forEach(btn => {
 });
 
 // Get current question
-
+let currIndex = 0;
 
 renderPages();
