@@ -41,6 +41,7 @@ const fullName = document.querySelector(".agency-span");
 const endResult = document.querySelector(".end-result");
 const scoreSpan = document.querySelector(".score");
 const scoreSpan2 = document.querySelector(".score-top");
+const levelSpan = document.querySelector(".level-top");
 const timeSpan = document.querySelector(".time");
 const timeSpan2 = document.querySelector(".time-top");
 
@@ -64,6 +65,7 @@ function renderGame() {
     fullName.textContent = questions[currIndex].fullName;
     scoreSpan2.textContent = `Score: ${score} / ${questions.length}`;
     timeSpan2.textContent = `Time: ${formatTime(totalmilliseconds)}`;
+    levelSpan.textContent = `Level: ${currIndex} / ${questions.length}`;
 }
 
 backBtn.addEventListener('click', e => {
