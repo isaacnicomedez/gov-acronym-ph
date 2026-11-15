@@ -2,6 +2,7 @@ import { agencies } from "./data.js";
 
 let state = "idle";
 let diff = "";
+let isNewRecord = false;
 
 // Render pages
 const homePage = document.querySelector("#home");
@@ -19,13 +20,13 @@ function renderPages() {
         const hardBest = getHighScore("hard");
 
         if (easyHighScoreEl) {
-            easyHighScoreEl.textContent = `Easy - Score: ${easyBest.score} | Time: ${easyBest.time}`;
+            easyHighScoreEl.textContent = `Easy - Score: ${easyBest.score} / ${easySet.length} | Time: ${easyBest.time}`;
         }
         if (intermediateHighScoreEl) {
-            intermediateHighScoreEl.textContent = `Intermediate - Score: ${interBest.score} | Time: ${interBest.time}`;
+            intermediateHighScoreEl.textContent = `Intermediate - Score: ${interBest.score} / ${intermediateSet.length}| Time: ${interBest.time}`;
         }
         if (hardHighScoreEl) {
-            hardHighScoreEl.textContent = `Hard - Score: ${hardBest.score} | Time: ${hardBest.time}`;
+            hardHighScoreEl.textContent = `Hard - Score: ${hardBest.score} / ${hardSet.length} | Time: ${hardBest.time}`;
         }
     }
 }
@@ -55,9 +56,6 @@ function renderGame() {
         acronymSpan.textContent = "Finished!";
         scoreSpan.textContent = `${isNewRecord ? "New High" : ""} Score: ${score} / ${questions.length}`;
         timeSpan.textContent = `Time: ${formatTime(totalmilliseconds)}`;
-        if (isNewRecord) {
-
-        }
         return;
     }
 
@@ -75,7 +73,7 @@ backBtn.addEventListener('click', e => {
 });
 
 // Get questions
-const easySet = agencies.filter(a => a.difficulty === "easy").splice(0, 3);
+const easySet = agencies.filter(a => a.difficulty === "easy");
 console.log(easySet)
 const intermediateSet = agencies.filter(a => a.difficulty === "intermediate");
 const hardSet = agencies.filter(a => a.difficulty === "hard");
@@ -149,16 +147,14 @@ inputEl.addEventListener('keydown', e => {
             isConfirmed = true;
         } else {
             getNextQuestion();
-            startTimer();
-            inputEl.focus();
             inputEl.value = "";
             if (state === "end") {
-                pauseTimer();
                 inputEl.disabled = true;
             } else {
                 startTimer();
                 isConfirmed = false;
                 inputEl.disabled = false;
+                inputEl.focus();
             }
             renderGame();
         }
@@ -169,6 +165,8 @@ function getNextQuestion() {
     currIndex++;
     if (currIndex >= questions.length) {
         state = "end";
+        pauseTimer();
+        isNewRecord = saveHighScore(diff, score, totalmilliseconds);
         return;
     }
     state = "answering";
@@ -203,7 +201,7 @@ function resetTimer() {
 }
 
 // Format time
-function formatTime(totalMilliseconds) {
+function formatTime(totalMilliseconds, includeMs = true) {
     const totalSeconds = Math.floor(totalMilliseconds / 1000);
 
     const minutes = Math.floor(totalSeconds / 60);
@@ -214,11 +212,12 @@ function formatTime(totalMilliseconds) {
     const formattedSeconds = String(seconds).padStart(2, '0');
     const formattedCentiseconds = String(centiseconds).padStart(2, '0');
 
-    return `${formattedMinutes}:${formattedSeconds}:${formattedCentiseconds}`;
+    return includeMs
+        ? `${formattedMinutes}:${formattedSeconds}:${formattedCentiseconds}`
+        : `${formattedMinutes}:${formattedSeconds}`;
 }
 
 // local storage
-let isNewRecord = false;
 
 function saveHighScore(difficulty, score, time) {
     const scoreKey = `highscore_${difficulty}`;
@@ -233,7 +232,7 @@ function saveHighScore(difficulty, score, time) {
         localStorage.setItem(scoreKey, score);
         localStorage.setItem(timeKey, time);
         isNewRecord = true;
-    } 
+    }
 
     else if (score === savedScore && time < savedTime) {
         localStorage.setItem(timeKey, time);
@@ -244,9 +243,10 @@ function saveHighScore(difficulty, score, time) {
 }
 
 function getHighScore(difficulty) {
+    const bestTime = localStorage.getItem(`besttime_${difficulty}`);
     return {
         score: localStorage.getItem(`highscore_${difficulty}`) || 0,
-        time: localStorage.getItem(`besttime_${difficulty}`) ? formatTime(localStorage.getItem(`besttime_${difficulty}`)) : "--:--:--"
+        time: bestTime ? formatTime(bestTime, false) : "--:--"
     };
 }
 
