@@ -20,13 +20,13 @@ function renderPages() {
         const hardBest = getHighScore("hard");
 
         if (easyHighScoreEl) {
-            easyHighScoreEl.textContent = `Easy - Score: ${easyBest.score} / ${easySet.length} | Time: ${easyBest.time}`;
+            easyHighScoreEl.textContent = `Best Record: Score ${easyBest.score} / ${easySet.length} | Time: ${easyBest.time}`;
         }
         if (intermediateHighScoreEl) {
-            intermediateHighScoreEl.textContent = `Intermediate - Score: ${interBest.score} / ${intermediateSet.length}| Time: ${interBest.time}`;
+            intermediateHighScoreEl.textContent = `Best Record: Score: ${interBest.score} / ${intermediateSet.length} | Time: ${interBest.time}`;
         }
         if (hardHighScoreEl) {
-            hardHighScoreEl.textContent = `Hard - Score: ${hardBest.score} / ${hardSet.length} | Time: ${hardBest.time}`;
+            hardHighScoreEl.textContent = `Best Record: Score: ${hardBest.score} / ${hardSet.length} | Time: ${hardBest.time}`;
         }
     }
 }

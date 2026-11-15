@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+:root {
+    --btn-coral: #f45b5b;
+    --btn-coral-h: #ff6e6e;
+    --btn-yellow: #ffd147;
+    --btn-yellow-h: #ffda66;
+    --btn-teal: #36b3b8;
+    --btn-teal-h: #4bc4c8;
+
+    --btn-outline: #1a1128;
+}
+
 .hide {
     display: none !important;
 }
@@ -42,6 +53,11 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    gap: 10px;
+}
+
+.subdesc span {
+    text-align: center;
 }
 
 .input-div {
@@ -69,11 +85,97 @@ input {
     border-radius: 20px;
 }
 
-.subdesc {
+.banner {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#home {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px 26px 20px;
+    gap: 10px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)
+}
+header p {
+    color: #111;
+}
+
+.cards {
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
+    width: 80%;
+    padding: 2rem 2.6rem;
+    border-radius: 14px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3)
+}
+
+.start-btn {
+    font-size: 1.2em;
+    padding: 10px 0;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+}
+
+button {
+    text-decoration: none;
+    color: var(--btn-outline);
+    background-color: var(--btn-coral);
+    border: 2px solid var(--btn-outline);
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 6px 0 var(--btn-outline);
+    width: 10em;
+    text-align: center;
+    margin-bottom: 0.8rem;
+}
+
+button:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 var(--btn-outline);
+}
+
+.easy-btn {
+    background-color: var(--btn-teal);
+}.easy-btn:hover {
+    background-color: var(--btn-teal-h);
+}
+
+.intermediate-btn {
+    background-color: var(--btn-yellow);
+}.intermediate-btn:hover {
+    background-color: var(--btn-yellow-h);
+}
+
+.hard-btn {
+    background-color: var(--btn-coral);
+}.hard-btn:hover {
+    background-color: var(--btn-coral-h);
+}
+
+.hs {
+    background-color: #eee;
+    padding: 10px 20px;
+    border-radius: 20px;
 }
 
 
