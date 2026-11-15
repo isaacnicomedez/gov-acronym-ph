@@ -27,6 +27,10 @@ function renderGame() {
     wrongIcon.classList.toggle("hide", state !== "wrong");
     clueSpan.classList.toggle("hide", state !== "answering");
     fullName.classList.toggle("hide", state === "answering");
+
+    acronymSpan.textContent = questions[currIndex].acronym;
+    clueSpan.textContent = questions[currIndex].description;
+    fullName.textContent = questions[currIndex].fullName;
 }
 
 backBtn.addEventListener('click', e => {
@@ -69,7 +73,6 @@ startBtns.forEach(btn => {
         state = "answering";
         renderPages();
         getSetQ();
-        console.log(questions);
         renderGame();
     });
 });
