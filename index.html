@@ -10,27 +10,40 @@
 
 <body>
     <div id="home">
-        <button class="easy-btn start-btn">Easy</button>
-        <button class="intermediate-btn start-btn">Intermediate</button>
-        <button class="hard-btn start-btn">Hard</button>
+        <div class="cards">
+            <button class="easy-btn start-btn">Easy</button>
+            <span class="easy-high-score"></span>
+        </div>
+        <div class="cards">
+            <button class="intermediate-btn start-btn">Intermediate</button>
+            <span class="intermediate-high-score"></span>
+        </div>
+        <div class="cards">
+            <button class="hard-btn start-btn">Hard</button>
+            <span class="hard-high-score"></span>
+        </div>
+
+
+
     </div>
     <div id="game">
-        <span class="back-btn"><</span>
-        <span class="score-top"></span>
-        <span class="time-top"></span>
-        <span class="acronym">DepEd</span>
-        <div class="subdesc">
-            <span class="hint-icon">?</span>
-            <span class="correct-icon">/</span>
-            <span class="wrong-icon">X</span>
-            <span class="clue-span">manages basic education system</span>
-            <span class="agency-span">Department of Education</span>
-            <div class="end-result">
-                <span class="score"></span>
-                <span class="time"></span>
-            </div>
-        </div>
-        <input type="text" placeholder="Here">
+        <span class="back-btn">
+            << /span>
+                <span class="score-top"></span>
+                <span class="time-top"></span>
+                <span class="acronym">DepEd</span>
+                <div class="subdesc">
+                    <span class="hint-icon">?</span>
+                    <span class="correct-icon">/</span>
+                    <span class="wrong-icon">X</span>
+                    <span class="clue-span">manages basic education system</span>
+                    <span class="agency-span">Department of Education</span>
+                    <div class="end-result">
+                        <span class="score"></span>
+                        <span class="time"></span>
+                    </div>
+                </div>
+                <input type="text" placeholder="Here">
     </div>
 
     <script type="module" src="scripts/script.js"></script>

@@ -11,6 +11,23 @@ const backBtn = document.querySelector(".back-btn");
 function renderPages() {
     homePage.classList.toggle("hide", state !== "idle");
     gamePage.classList.toggle("hide", state !== "answering");
+
+    if (state === "idle") {
+
+        const easyBest = getHighScore("easy");
+        const interBest = getHighScore("intermediate");
+        const hardBest = getHighScore("hard");
+
+        if (easyHighScoreEl) {
+            easyHighScoreEl.textContent = `Easy - Score: ${easyBest.score} | Time: ${easyBest.time}`;
+        }
+        if (intermediateHighScoreEl) {
+            intermediateHighScoreEl.textContent = `Intermediate - Score: ${interBest.score} | Time: ${interBest.time}`;
+        }
+        if (hardHighScoreEl) {
+            hardHighScoreEl.textContent = `Hard - Score: ${hardBest.score} | Time: ${hardBest.time}`;
+        }
+    }
 }
 
 // Render gui
@@ -232,5 +249,9 @@ function getHighScore(difficulty) {
         time: localStorage.getItem(`besttime_${difficulty}`) ? formatTime(localStorage.getItem(`besttime_${difficulty}`)) : "--:--:--"
     };
 }
+
+const easyHighScoreEl = document.querySelector(".easy-high-score");
+const intermediateHighScoreEl = document.querySelector(".intermediate-high-score");
+const hardHighScoreEl = document.querySelector(".hard-high-score");
 
 renderPages();
