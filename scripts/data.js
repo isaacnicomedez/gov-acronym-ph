@@ -61,125 +61,125 @@ export const agencies = [
         description: "Defends national sovereignty and territorial integrity." 
     },
 
-    // --- MEDIUM ---
+    // --- INTERMEDIATE ---
     { 
         acronym: "DPWH", 
         fullName: "Department of Public Works and Highways", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Constructs and maintains national roads, bridges, and public infrastructure." 
     },
     { 
         acronym: "DILG", 
         fullName: "Department of the Interior and Local Government", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Supervises local government units and internal peace and order." 
     },
     { 
         acronym: "DOLE", 
         fullName: "Department of Labor and Employment", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Protects worker rights, welfare, and employment opportunities." 
     },
     { 
         acronym: "DOF", 
         fullName: "Department of Finance", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Manages government fiscal policies, revenue, and public debt." 
     },
     { 
         acronym: "DOJ", 
         fullName: "Department of Justice", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Upholds the rule of law, prosecution, and correctional administration." 
     },
     { 
         acronym: "DFA", 
         fullName: "Department of Foreign Affairs", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Handles international relations, diplomacy, and overseas Filipinos." 
     },
     { 
         acronym: "DND", 
         fullName: "Department of National Defense", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Oversees national security and military defense strategy." 
     },
     { 
         acronym: "DENR", 
         fullName: "Department of Environment and Natural Resources", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Protects natural resources, forests, and environmental policies." 
     },
     { 
         acronym: "DOTr", 
         fullName: "Department of Transportation", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Regulates national public transportation systems, aviation, and rail." 
     },
     { 
         acronym: "DICT", 
         fullName: "Department of Information and Communications Technology", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Drives national digital transformation, internet access, and cybersecurity." 
     },
     { 
         acronym: "DOST", 
         fullName: "Department of Science and Technology", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Funds and leads scientific research, innovation, and tech development." 
     },
     { 
         acronym: "DOE", 
         fullName: "Department of Energy", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Manages the country's power supply, fuel, and energy policies." 
     },
     { 
         acronym: "DBM", 
         fullName: "Department of Budget and Management", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Oversees the national budget allocation and government spending." 
     },
     { 
         acronym: "DMW", 
         fullName: "Department of Migrant Workers", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Protects and serves Overseas Filipino Workers (OFWs) and their families." 
     },
     { 
         acronym: "COMELEC", 
         fullName: "Commission on Elections", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Administers and regulates national and local elections." 
     },
     { 
         acronym: "PAGASA", 
         fullName: "Philippine Atmospheric, Geophysical and Astronomical Services Administration", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Provides weather forecasts, flood warnings, and typhoon tracking." 
     },
     { 
         acronym: "PHIVOLCS", 
         fullName: "Philippine Institute of Volcanology and Seismology", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Monitors earthquakes, volcanic eruptions, and tsunami warnings." 
     },
     { 
         acronym: "CHED", 
         fullName: "Commission on Higher Education", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Governs universities, colleges, and degree programs." 
     },
     { 
         acronym: "TESDA", 
         fullName: "Technical Education and Skills Development Authority", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Provides vocational training and skills certification." 
     },
     { 
         acronym: "BFP", 
         fullName: "Bureau of Fire Protection", 
-        difficulty: "medium", 
+        difficulty: "intermediate", 
         description: "Prevents and suppresses destructive fires and emergency rescues." 
     },
 
