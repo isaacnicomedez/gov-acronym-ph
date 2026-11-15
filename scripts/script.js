@@ -20,13 +20,17 @@ const correctIcon = document.querySelector(".correct-icon");
 const wrongIcon = document.querySelector(".wrong-icon");
 const clueSpan = document.querySelector(".clue-span");
 const fullName = document.querySelector(".agency-span");
+const endResult = document.querySelector(".end-result");
+const scoreSpan = document.querySelector(".score");
+const timeSpan = document.querySelector(".time");
 
 function renderGame() {
     hintIcon.classList.toggle("hide", state !== "answering");
     correctIcon.classList.toggle("hide", state !== "correct");
     wrongIcon.classList.toggle("hide", state !== "wrong");
     clueSpan.classList.toggle("hide", state !== "answering");
-    fullName.classList.toggle("hide", state === "answering");
+    fullName.classList.toggle("hide", state !== "correct" && state !== "wrong");
+    endResult.classList.toggle("hide", state !== "end");
 
     if (state === "end") {
         acronymSpan.textContent = "Finished!";
