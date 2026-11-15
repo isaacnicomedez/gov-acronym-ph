@@ -1,3 +1,82 @@
-.hide {
-    display: none;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+.hide {
+    display: none !important;
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.board {
+    padding: 10px 20px 10px 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.score-board {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.acronym-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0 0 0;
+}
+.acronym {
+    font-weight: 700;
+    font-size: 3em;
+}
+
+.subdesc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.input-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+}
+input {
+    padding: 5px 10px;
+    font-size: 1em;
+    flex: 1;
+}
+
+.hint-icon {
+    background-color: #A0A0A0;
+    border-radius: 20px;
+}
+.correct-icon {
+    background-color: green;
+    border-radius: 20px;
+}
+.wrong-icon  {
+    background-color: rgb(216, 37, 37);
+    border-radius: 20px;
+}
+
+.subdesc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+
+

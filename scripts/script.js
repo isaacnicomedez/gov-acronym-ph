@@ -186,7 +186,7 @@ function startTimer() {
 
     intervalId = setInterval(() => {
         totalmilliseconds += 10;
-        timeSpan2.textContent = formatTime(totalmilliseconds);
+        timeSpan2.textContent = `Time: ${formatTime(totalmilliseconds)}`;
     }, 10);
 }
 
