@@ -1,3 +1,5 @@
+import { agencies } from "./data.js";
+
 let state = "idle";
 let diff = "";
 
@@ -32,6 +34,19 @@ backBtn.addEventListener('click', e => {
     renderPages();
 });
 
+// Get questions
+const easySet = agencies.filter(a => a.difficulty === "easy");
+const intermediateSet = agencies.filter(a => a.difficulty === "intermediate");
+const hardSet = agencies.filter(a => a.difficulty === "hard");
+
+let questions = [];
+
+function getSetQ() {
+    if (diff === "easy") questions = easySet;  
+    if (diff === "intermediate") questions = intermediateSet;  
+    if (diff === "hard") questions = hardSet;  
+}
+
 // Get dificulty
 const startBtns = document.querySelectorAll(".start-btn");
 
@@ -40,8 +55,13 @@ startBtns.forEach(btn => {
         diff = e.target.textContent.toLowerCase();
         state = "answering";
         renderPages();
+        getSetQ();
+        console.log(questions);
         renderGame();
     });
 });
+
+// Get current question
+
 
 renderPages();
